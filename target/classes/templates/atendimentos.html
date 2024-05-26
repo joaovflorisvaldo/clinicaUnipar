@@ -9,26 +9,24 @@
 <form method="post" th:action="@{/atendimentos/save}" class="form-container">
     <label>
         <label style="margin-bottom: 4px">Paciente</label>
-        <select name="nomeCliente" required>
-            <option value="" disabled selected>Selecione um Cliente</option>
+        <select name="pkPaciente" required>
             <option th:each="paciente : ${pacientes}"
-                    th:value="${paciente.nome}"
+                    th:value="${paciente.id}"
                     th:text="${paciente.nome}">
             </option>
         </select>
     </label>
     <label>
         <label style="margin-bottom: 4px">Médico</label>
-        <select name="nomeMedico" required>
-            <option value="" disabled selected>Selecione um médico</option>
+        <select name="pkMedico" required>
             <option th:each="medico : ${medicos}"
-                    th:value="${medico.nome}"
+                    th:value="${medico.id}"
                     th:text="${medico.nome + ' - ' + medico.especialidade}">
             </option>
         </select>
     </label>
     <label>
-        <input type="text" placeholder="Data e Hora da Consulta" name="dataHora" required/>
+        <input name="data_hora" type="text" placeholder="Data e Hora da Consulta" required/>
     </label>
     <button type="submit">Salvar</button>
 </form>
@@ -43,9 +41,9 @@
 
     <tbody>
     <tr th:each="atendimento : ${atendimentos}">
-        <td th:text="${atendimento.nomeCliente}"></td>
-        <td th:text="${atendimento.nomeMedico}"></td>
-        <td th:text="${atendimento.dataHora}"></td>
+        <td th:text="${atendimento.medico.nome}"></td>
+        <td th:text="${atendimento.paciente.nome}"></td>
+        <td th:text="${atendimento.data_hora}"></td>
     </tr>
     </tbody>
 </table>
