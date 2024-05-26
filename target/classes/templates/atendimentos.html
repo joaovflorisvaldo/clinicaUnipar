@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atendimentos</title>
+</head>
+<body>
+<form method="post" th:action="@{/atendimentos/save}" class="form-container">
+    <label>
+        <label style="margin-bottom: 4px">Paciente</label>
+        <select name="nomeCliente" required>
+            <option value="" disabled selected>Selecione um Cliente</option>
+            <option th:each="paciente : ${pacientes}"
+                    th:value="${paciente.nome}"
+                    th:text="${paciente.nome}">
+            </option>
+        </select>
+    </label>
+    <label>
+        <label style="margin-bottom: 4px">Médico</label>
+        <select name="nomeMedico" required>
+            <option value="" disabled selected>Selecione um médico</option>
+            <option th:each="medico : ${medicos}"
+                    th:value="${medico.nome}"
+                    th:text="${medico.nome + ' - ' + medico.especialidade}">
+            </option>
+        </select>
+    </label>
+    <label>
+        <input type="text" placeholder="Data e Hora da Consulta" name="dataHora" required/>
+    </label>
+    <button type="submit">Salvar</button>
+</form>
+<table class="user-table">
+    <thead>
+    <tr>
+        <th>Cliente</th>
+        <th>Medico</th>
+        <th>Data/Hora da consulta</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="atendimento : ${atendimentos}">
+        <td th:text="${atendimento.nomeCliente}"></td>
+        <td th:text="${atendimento.nomeMedico}"></td>
+        <td th:text="${atendimento.dataHora}"></td>
+    </tr>
+    </tbody>
+</table>
+<form th:action="@{/atendimentos/retornar}" method="post" class="retornar">
+    <button class="buttonVoltar" type="submit">Voltar</button>
+</form>
+</body>
+</html>
