@@ -3,96 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/stylesheets.css">
     <title>Login</title>
-    <style>
-        body {
-            display: flex;
-            font-family: Arial, sans-serif;
-            background-color: #e8e8e8;
-            margin: 0;
-            padding: 0;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
-        }
 
-        Form{
-            display: flex;
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            padding-bottom: 0;
-            justify-content: center;
-        }
-        header{
-            display: flex;
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            padding-bottom: 0;
-            justify-content: center;
-        }
-        .cadastros {
-            justify-content: left;
-            display: grid;
-        }
-        .buttonVoltar{
-            width: 80px;
-            margin-bottom: 16px;
-        }
-        .labelCadastrar{
-            margin-bottom: 4px;
-        }
-        .bemVindo{
-            display: flex;
-            justify-content: center;
-        }
-        h3{
-            margin-top: 0;
-        }
-        .container{
-            width: 250px;
-            justify-content: center;
-        }
-    </style>
 </head>
 <body>
-    <header>
+<div class="container">
+    <div class="menu">
         <div class="bemVindo">
             <h3 style="margin-right: 4px">Bem vindo(a)</h3>
             <h3 th:text="${session.UsuarioLogado}"></h3>
         </div>
-    </header>
 
-    <form th:action="@{/cadastrarMedicos}" method="post">
-        <div class="container">
+        <form th:action="@{/cadastrarMedicos}" method="post">
+
             <div class="cadastros">
                 <label class="labelCadastrar"><b>Médico</b></label>
-                <button class="buttonVoltar" type="submit">Cadastrar</button>
+                <button class="btPaginas" type="submit">Cadastrar</button>
             </div>
-        </div>
-    </form>
-    <form  th:action="@{/cadastrarPacientes}" method="post">
-        <div class="container">
+
+        </form>
+        <form th:action="@{/cadastrarPacientes}" method="post">
+
             <div class="cadastros">
                 <label class="labelCadastrar"><b>Paciente</b></label>
-                <button class="buttonVoltar" type="submit">Cadastrar</button>
+                <button class="btPaginas" type="submit">Cadastrar</button>
             </div>
-        </div>
-    </form>
-    <form  th:action="@{/cadastrarAtendimentos}" method="post">
-        <div class="container">
+
+        </form>
+        <form th:action="@{/cadastrarAtendimentos}" method="post">
+
             <div class="cadastros">
                 <label class="labelCadastrar"><b>Atendimentos</b></label>
-                <button class="buttonVoltar" type="submit">Cadastrar</button>
+                <button class="btPaginas" type="submit">Cadastrar</button>
             </div>
-        </div>
-    </form>
-
+        </form>
+    </div>
+</div>
 </body>
 </html>
